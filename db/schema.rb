@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108195707) do
+ActiveRecord::Schema.define(version: 20141109203259) do
+
+  create_table "listings", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title",        default: "",  null: false
+    t.text     "description",  default: "",  null: false
+    t.string   "neighborhood", default: "",  null: false
+    t.string   "address",      default: "",  null: false
+    t.string   "city",         default: "",  null: false
+    t.string   "state",        default: "",  null: false
+    t.string   "country",      default: "",  null: false
+    t.decimal  "price",        default: 0.0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id"
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
