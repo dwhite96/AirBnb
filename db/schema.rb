@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109203259) do
+ActiveRecord::Schema.define(version: 20141109221619) do
+
+  create_table "booking_requests", force: true do |t|
+    t.integer  "listing_id"
+    t.string   "requestor_first_name", default: "", null: false
+    t.string   "requestor_last_name",  default: "", null: false
+    t.string   "requestor_email",      default: "", null: false
+    t.date     "requested_dates",                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "booking_requests", ["listing_id"], name: "index_booking_requests_on_listing_id"
 
   create_table "listings", force: true do |t|
     t.integer  "user_id"
