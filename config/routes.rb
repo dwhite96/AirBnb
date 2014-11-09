@@ -7,7 +7,9 @@ get 'welcome/index'
 devise_for :users
 
 resources :users
-resources :listings
+resources :listings do
+  resources :booking_requests
+end
 
 root 'welcome#index'
 

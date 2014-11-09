@@ -1,5 +1,6 @@
 class Listing < ActiveRecord::Base
   belongs_to :user
+  has_many :booking_requests
 
   validates :title, presence: true
   validates :address, presence: true
