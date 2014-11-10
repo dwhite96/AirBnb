@@ -1,1 +1,5 @@
 <h1>Welcome to AirBnb</h1>
+
+<% if user_signed_in? %>
+  <%= link_to 'Listings', listings_path %>
+<% end %>

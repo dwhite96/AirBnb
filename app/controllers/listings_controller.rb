@@ -3,35 +3,36 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
-    respond_with(@listings)
   end
 
   def show
-    respond_with(@listing)
   end
 
   def new
     @listing = Listing.new
-    respond_with(@listing)
   end
 
   def edit
   end
 
   def create
-    @listing = Listing.new(listing_params)
-    @listing.save
-    respond_with(@listing)
+    @listing = current_user.listings.create(listing_params)
+    if @listing.persisted?
+      redirect_to listings_path, notice: "Listing was successfully posted."
+    else
+      render :new
+    end
   end
 
   def update
     @listing.update(listing_params)
-    respond_with(@listing)
   end
 
   def destroy
     @listing.destroy
-    respond_with(@listing)
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Listing was successfully destroyed.' }
+    end
   end
 
   private
