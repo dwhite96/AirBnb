@@ -3,35 +3,35 @@ class BookingRequestsController < ApplicationController
 
   def index
     @booking_requests = BookingRequest.all
-    respond_with(@booking_requests)
   end
 
   def show
-    respond_with(@booking_request)
   end
 
   def new
     @booking_request = BookingRequest.new
-    respond_with(@booking_request)
   end
 
   def edit
   end
 
   def create
-    @booking_request = BookingRequest.new(booking_request_params)
-    @booking_request.save
-    respond_with(@booking_request)
+    listing = Listing.find(params[:listing_id])
+    @booking_request = listing.booking_requests.create(booking_request_params)
+
+    if @booking_request.persisted?
+      redirect_to listings_path, notice: "Booking request was successfully created."
+    else
+      render :new
+    end
   end
 
   def update
     @booking_request.update(booking_request_params)
-    respond_with(@booking_request)
   end
 
   def destroy
     @booking_request.destroy
-    respond_with(@booking_request)
   end
 
   private
@@ -40,6 +40,6 @@ class BookingRequestsController < ApplicationController
     end
 
     def booking_request_params
-      params.require(:booking_request).permit(:listing, :requestor_first_name, :requestor_last_name, :requestor_email, :requested_dates)
+      params.require(:booking_request).permit(:requestor_first_name, :requestor_last_name, :requestor_email, :requested_dates)
     end
 end
