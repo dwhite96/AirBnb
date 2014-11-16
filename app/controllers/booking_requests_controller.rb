@@ -2,7 +2,8 @@ class BookingRequestsController < ApplicationController
   before_action :set_booking_request, only: [:show, :edit, :update, :destroy]
 
   def index
-    @booking_requests = BookingRequest.all
+    @listing_id = params[:listing_id]
+    @booking_requests = BookingRequest.where(listing_id: @listing_id)
   end
 
   def show
@@ -32,6 +33,9 @@ class BookingRequestsController < ApplicationController
 
   def destroy
     @booking_request.destroy
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Listing was successfully destroyed.' }
+    end
   end
 
   private

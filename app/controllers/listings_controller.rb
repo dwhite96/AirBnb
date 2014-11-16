@@ -29,6 +29,7 @@ class ListingsController < ApplicationController
   end
 
   def destroy
+    p params
     @listing.destroy
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Listing was successfully destroyed.' }

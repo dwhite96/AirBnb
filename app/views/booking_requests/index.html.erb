@@ -18,11 +18,12 @@
         <td><%= booking_request.requestor_last_name %></td>
         <td><%= booking_request.requestor_email %></td>
         <td><%= booking_request.requested_dates %></td>
-        <td><%= link_to 'Show', listing_booking_request_path(booking_request.id) %></td>
-        <td><%= link_to 'Delete', listing_booking_request_path(current_listing, booking_request), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', listing_booking_request_path(@listing_id, booking_request.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<%= link_to 'Back', listings_path %>
