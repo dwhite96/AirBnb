@@ -5,4 +5,6 @@ class BookingRequest < ActiveRecord::Base
   validates :requestor_last_name, presence: true
   validates :requestor_email, presence: true
   validates :requested_dates, presence: true
+
+  scope :current_booking_requests, -> { where(requestor_email: current_user.email AND listing_id: @listing_id) }
 end

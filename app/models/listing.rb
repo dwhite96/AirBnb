@@ -8,4 +8,5 @@ class Listing < ActiveRecord::Base
   validates :state, presence: true
   validates :country, presence: true
   validates :price, presence: true, numericality: true
+
 end

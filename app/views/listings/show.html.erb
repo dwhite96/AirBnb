@@ -43,6 +43,14 @@
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
 
-<%= link_to 'Request Booking', new_listing_booking_request_path(@listing) %>
+<br>
 
 <%= link_to 'Show Current Booking Requests', listing_booking_requests_path(@listing) %>
+
+<br>
+
+<% if @listing.booking_requests.exists?(current_booking_requests) %>
+  You have submitted a booking request for this space.
+<% else %>
+  <%= link_to 'Request Booking', new_listing_booking_request_path(@listing) %>
+<% end %>
