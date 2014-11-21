@@ -11,19 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109221619) do
+ActiveRecord::Schema.define(version: 20141121055506) do
 
   create_table "booking_requests", force: true do |t|
     t.integer  "listing_id"
-    t.string   "requestor_first_name", default: "", null: false
-    t.string   "requestor_last_name",  default: "", null: false
-    t.string   "requestor_email",      default: "", null: false
-    t.date     "requested_dates",                   null: false
+    t.date     "requested_dates",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",         default: 0, null: false
   end
 
   add_index "booking_requests", ["listing_id"], name: "index_booking_requests_on_listing_id"
+  add_index "booking_requests", ["user_id"], name: "index_booking_requests_on_user_id"
 
   create_table "listings", force: true do |t|
     t.integer  "user_id"
@@ -54,6 +53,8 @@ ActiveRecord::Schema.define(version: 20141109221619) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "first_name",             default: "", null: false
+    t.string   "last_name",              default: "", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
