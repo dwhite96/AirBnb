@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Listing:</strong>
+  <%= @booking_request.listing %>
+</p>
+
+<p>
+  <strong>Requestor first name:</strong>
+  <%= @booking_request.requestor_first_name %>
+</p>
+
+<p>
+  <strong>Requestor last name:</strong>
+  <%= @booking_request.requestor_last_name %>
+</p>
+
+<p>
+  <strong>Requestor email:</strong>
+  <%= @booking_request.requestor_email %>
+</p>
+
+<p>
+  <strong>Requested dates:</strong>
+  <%= @booking_request.requested_dates %>
+</p>
+
+<%= link_to 'Edit', edit_booking_request_path(@booking_request) %> |
+<%= link_to 'Back', booking_requests_path %>

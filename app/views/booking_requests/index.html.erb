@@ -1,0 +1,29 @@
+<h1>Listing booking_requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Requestor first name</th>
+      <th>Requestor last name</th>
+      <th>Requestor email</th>
+      <th>Requested dates</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @booking_requests.each do |booking_request| %>
+      <tr>
+        <td><%= booking_request.user.first_name %></td>
+        <td><%= booking_request.user.last_name %></td>
+        <td><%= booking_request.user.email %></td>
+        <td><%= booking_request.requested_dates %></td>
+        <td><%= link_to 'Delete', listing_booking_request_path(@listing_id, booking_request.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', listing_path(@listing_id) %>

@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @listing.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @listing.description %>
+</p>
+
+<p>
+  <strong>Neighborhood:</strong>
+  <%= @listing.neighborhood %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @listing.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @listing.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @listing.state %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @listing.country %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @listing.price %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>
+
+<br>
+
+<%= link_to 'Show Current Booking Requests', listing_booking_requests_path(@listing) %>
+
+<br>
+
+<% if @listing.requested_by?(current_user) %>
+  You have submitted a booking request for this space.
+<% else %>
+  <%= link_to 'Request Booking', new_listing_booking_request_path(@listing) %>
+<% end %>

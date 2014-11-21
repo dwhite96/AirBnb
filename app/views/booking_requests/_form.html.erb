@@ -1,0 +1,21 @@
+<%= form_for(@booking_request, url: { action: :create }) do |f| %>
+  <% if @booking_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking_request.errors.count, "error") %> prohibited this booking_request from being saved:</h2>
+
+      <ul>
+      <% @booking_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :requested_dates %><br>
+    <%= f.date_select :requested_dates %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Book Request' %>
+  </div>
+<% end %>
