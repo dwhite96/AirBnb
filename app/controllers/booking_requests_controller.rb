@@ -17,10 +17,10 @@ class BookingRequestsController < ApplicationController
   end
 
   def create
-    listing = Listing.find(params[:listing_id])
-    @booking_request = listing.booking_requests.create(booking_request_params)
+    @booking_request = current_user.booking_requests.build(booking_request_params)
+    @booking_request.listing = Listing.find(params[:listing_id])
 
-    if @booking_request.persisted?
+    if @booking_request.save
       redirect_to listings_path, notice: "Booking request was successfully created."
     else
       render :new
@@ -44,6 +44,6 @@ class BookingRequestsController < ApplicationController
     end
 
     def booking_request_params
-      params.require(:booking_request).permit(:requestor_first_name, :requestor_last_name, :requestor_email, :requested_dates)
+      params.require(:booking_request).permit(:requested_dates)
     end
 end
