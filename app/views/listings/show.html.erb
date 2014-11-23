@@ -40,17 +40,17 @@
   <%= @listing.price %>
 </p>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
 
-<br>
-
-<%= link_to 'Show Current Booking Requests', listing_booking_requests_path(@listing) %>
-
-<br>
-
-<% if @listing.requested_by?(current_user) %>
-  You have submitted a booking request for this space.
+<% if @listing.user_id == current_user.id %>
+  | <%= link_to 'Edit', edit_listing_path(@listing) %>
+  <br>
+  <%= link_to 'Show Current Booking Requests', listing_booking_requests_path(@listing) %>
+<% elsif @listing.requested_by?(current_user) %>
+  <br>
+    You have submitted a booking request for this space.
 <% else %>
   <%= link_to 'Request Booking', new_listing_booking_request_path(@listing) %>
 <% end %>
+
+<br>
