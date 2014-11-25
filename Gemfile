@@ -9,6 +9,10 @@ gem 'devise'
 
 gem 'quiet_assets', '~> 1.0.3'
 
+gem 'bootstrap-sass', '~> 3.3.1'
+
+gem 'autoprefixer-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
