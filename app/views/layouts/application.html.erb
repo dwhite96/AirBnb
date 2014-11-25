@@ -7,13 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav>
-  <%= render partial: nav_partial %>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid" id="nav">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_path %>">AirBnb</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= render partial: nav_partial %></li>
+      <br>
+      <li><% [:notice, :alert].each do |type| %>
+        <%= render partial: "shared/flash", locals: { type: type } %>
+      <% end %></li>
+    </ul>
+  </div>
 </nav>
-
-<% [:notice, :alert].each do |type| %>
-  <%= render partial: "shared/flash", locals: { type: type } %>
-<% end %>
 
 <%= yield %>
 
