@@ -156,6 +156,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  mail
   pry
   quiet_assets (~> 1.0.3)
   rails (= 4.1.6)
