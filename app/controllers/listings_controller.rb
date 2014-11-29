@@ -25,14 +25,18 @@ class ListingsController < ApplicationController
   end
 
   def update
-    @listing.update(listing_params)
+    if @listing.update(listing_params)
+      redirect_to listings_path, notice: "Listing was successfully updated."
+    else
+      render :edit
+    end
   end
 
   def destroy
     p params
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to listings_path, notice: 'Listing was successfully destroyed.' }
     end
   end
 

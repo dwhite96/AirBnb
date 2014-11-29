@@ -27,8 +27,6 @@
             <td><%= listing.country %></td>
             <td><%= listing.price %></td>
             <td><%= link_to 'Show', listing %></td>
-            <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-            <td><%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
