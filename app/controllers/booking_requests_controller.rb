@@ -21,6 +21,7 @@ class BookingRequestsController < ApplicationController
     @booking_request.listing = Listing.find(params[:listing_id])
 
     if @booking_request.save
+      BookingRequestMailer.booking_request_email(@booking_request).deliver
       redirect_to listings_path, notice: "Booking request was successfully created."
     else
       render :new
