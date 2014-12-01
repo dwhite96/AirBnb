@@ -30,12 +30,13 @@ class BookingRequestsController < ApplicationController
 
   def update
     @booking_request.update(booking_request_params)
+    render :show
   end
 
   def destroy
     @booking_request.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to listing_booking_requests_path, notice: 'Listing was successfully destroyed.' }
     end
   end
 
@@ -45,6 +46,6 @@ class BookingRequestsController < ApplicationController
     end
 
     def booking_request_params
-      params.require(:booking_request).permit(:requested_dates)
+      params.require(:booking_request).permit(:requested_dates, :status)
     end
 end

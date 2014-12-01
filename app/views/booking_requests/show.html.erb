@@ -1,23 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Listing:</strong>
-  <%= @booking_request.listing %>
-</p>
-
-<p>
   <strong>Requestor first name:</strong>
-  <%= @booking_request.requestor_first_name %>
+  <%= @booking_request.user.first_name %>
 </p>
 
 <p>
   <strong>Requestor last name:</strong>
-  <%= @booking_request.requestor_last_name %>
+  <%= @booking_request.user.last_name %>
 </p>
 
 <p>
   <strong>Requestor email:</strong>
-  <%= @booking_request.requestor_email %>
+  <%= @booking_request.user.email %>
 </p>
 
 <p>
@@ -25,5 +20,22 @@
   <%= @booking_request.requested_dates %>
 </p>
 
-<%= link_to 'Edit', edit_booking_request_path(@booking_request) %> |
-<%= link_to 'Back', booking_requests_path %>
+<p>
+  <strong>Approval status:</strong>
+  <%= @booking_request.status %>
+</p>
+
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    Approve/Deny
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li><%= link_to 'Approve booking request', listing_booking_request_path(@booking_request.listing_id, @booking_request.id, 'booking_request[status]' => 'Approved'), method: :put, data: { confirm: 'Are you sure?' } %></li>
+    <li><%= link_to 'Deny booking request', listing_booking_request_path(@booking_request.listing_id, @booking_request.id, 'booking_request[status]' => 'Denied'), method: :put, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+</div>
+
+<%= link_to 'Delete', listing_booking_request_path(@booking_request.listing_id, @booking_request.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+<br>
+<%= link_to 'Back', listing_booking_requests_path %>
