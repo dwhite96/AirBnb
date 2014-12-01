@@ -7,6 +7,10 @@ end
 
 gem 'devise'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
 gem 'quiet_assets', '~> 1.0.3'
 
 gem 'bootstrap-sass', '~> 3.3.1'

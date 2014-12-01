@@ -43,6 +43,10 @@
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </div>
+  <div class="field">
+    <%= f.file_field :photo %>
+    <%= render partial: "shared/error", locals: { model: @listing, field: :photo } %>
+  </div>
   <div class="actions">
     <%= f.submit 'Post Listing' %>
   </div>
