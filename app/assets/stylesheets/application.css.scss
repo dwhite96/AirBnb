@@ -7,3 +7,10 @@ body {
   padding-left: 100px;
   padding-right: 100px;
 }
+
+#map img {
+  max-width: none;
+}
+#map label {
+  width: auto; display:inline;
+}

@@ -11,6 +11,10 @@ gem 'carrierwave'
 
 gem 'mini_magick'
 
+gem 'gmaps4rails'
+
+gem 'geocoder'
+
 gem 'quiet_assets', '~> 1.0.3'
 
 gem 'bootstrap-sass', '~> 3.3.1'
@@ -53,4 +57,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

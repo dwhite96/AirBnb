@@ -13,6 +13,9 @@ class Listing < ActiveRecord::Base
   validates :price, presence: true, numericality: true
   validates :photo, presence: true
 
+  geocoded_by :address
+  after_validation :geocode
+
   def requested_by?(user)
     booking_request_users.include?(user)
   end

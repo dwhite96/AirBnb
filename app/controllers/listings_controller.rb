@@ -6,6 +6,11 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @hash = Gmaps4rails.build_markers(@listing) do |listing, marker|
+      marker.lat listing.latitude
+      marker.lng listing.longitude
+      marker.title listing.title
+    end
   end
 
   def new
@@ -46,6 +51,6 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:user_id, :title, :description, :neighborhood, :address, :city, :state, :country, :price)
+      params.require(:listing).permit(:user_id, :title, :description, :neighborhood, :address, :city, :state, :country, :price, :photo)
     end
 end
