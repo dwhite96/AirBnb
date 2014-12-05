@@ -1,4 +1,4 @@
-## AirBnb
+## Placebook
 
 An AirBnb clone website that lets users post available rental spaces for guests to stay overnight.
 
