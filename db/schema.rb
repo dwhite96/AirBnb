@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141204013158) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "booking_requests", force: true do |t|
     t.integer  "listing_id"
     t.date     "requested_dates",                  null: false
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 20141204013158) do
     t.string   "status",          default: "Open", null: false
   end
 
-  add_index "booking_requests", ["listing_id"], name: "index_booking_requests_on_listing_id"
-  add_index "booking_requests", ["user_id"], name: "index_booking_requests_on_user_id"
+  add_index "booking_requests", ["listing_id"], name: "index_booking_requests_on_listing_id", using: :btree
+  add_index "booking_requests", ["user_id"], name: "index_booking_requests_on_user_id", using: :btree
 
   create_table "listings", force: true do |t|
     t.integer  "user_id"
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20141204013158) do
     t.float    "longitude"
   end
 
-  add_index "listings", ["user_id"], name: "index_listings_on_user_id"
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
@@ -61,7 +64,7 @@ ActiveRecord::Schema.define(version: 20141204013158) do
     t.string   "last_name",              default: "", null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
