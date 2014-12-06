@@ -5,7 +5,7 @@ class CreateBookingRequests < ActiveRecord::Migration
       t.string :requestor_first_name, default: "",  null: false
       t.string :requestor_last_name, default: "",  null: false
       t.string :requestor_email, default: "",  null: false
-      t.date :requested_dates, default: "%m/%d/%y", null: false
+      t.date :requested_dates, null: false
 
       t.timestamps
     end
