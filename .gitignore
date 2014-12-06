@@ -16,8 +16,7 @@
 /tmp
 
 # Ignore all .yml files.
-/config/locales/*.yml
-/config/*.yml
+/config/database.yml
 
 # Ignore uploads files.
 /public/uploads
