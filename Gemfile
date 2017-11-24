@@ -27,9 +27,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'devise'
 
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.0'
 
 gem 'mini_magick'
+
+gem 'fog-aws'
 
 gem 'underscore-rails'
 
