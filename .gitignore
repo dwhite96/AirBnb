@@ -20,3 +20,6 @@
 
 # Ignore uploads files.
 /public/uploads
+
+# Ignore application configuration
+/config/application.yml
