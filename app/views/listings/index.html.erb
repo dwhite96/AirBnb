@@ -36,4 +36,6 @@
 
 <br>
 
-<%= link_to 'New Listing', new_listing_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Listing', new_listing_path %>
+<% end %>

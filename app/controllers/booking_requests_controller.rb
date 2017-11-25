@@ -1,5 +1,6 @@
 class BookingRequestsController < ApplicationController
   before_action :set_booking_request, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @listing_id = params[:listing_id]
@@ -21,7 +22,8 @@ class BookingRequestsController < ApplicationController
     @booking_request.listing = Listing.find(params[:listing_id])
 
     if @booking_request.save
-      BookingRequestMailer.booking_request_email(@booking_request).deliver
+      # mailer currently deactivated
+      # BookingRequestMailer.booking_request_email(@booking_request).deliver
       redirect_to listings_path, notice: "Booking request was successfully created."
     else
       render :new
